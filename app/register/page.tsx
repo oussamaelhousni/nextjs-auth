@@ -52,7 +52,7 @@ function Register() {
   }: FormSchema) => {
     const response = await register({ email, password, passwordConfirm });
     if (response?.error) {
-      form.setError("root", {
+      form.setError("email", {
         message: response.message,
       });
     }
