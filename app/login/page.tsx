@@ -5,6 +5,7 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -18,6 +19,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -97,6 +99,21 @@ function Login() {
             </form>
           </Form>
         </CardContent>
+        <CardFooter className="flex flex-col gap-2">
+          <div className="text-muted-foreground text-sm">
+            Don't have an account{" "}
+            <Link href="/register" className="underline">
+              Register
+            </Link>
+          </div>
+
+          <div className="text-muted-foreground text-sm">
+            Forgot password{" "}
+            <Link href="/reset-password" className="underline">
+              Reset my password
+            </Link>
+          </div>
+        </CardFooter>
       </Card>
     </main>
   );
