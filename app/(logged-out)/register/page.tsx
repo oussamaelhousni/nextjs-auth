@@ -58,7 +58,7 @@ function Register() {
     }
   };
   return (
-    <main className="flex justify-center items-center min-h-screen">
+    <>
       {/* form.formState.isSubmitSuccessful if we didn't set any error inside handleSubmit, isSubmitSuccessfull will be evaluated to true*/}
       {form.formState.isSubmitSuccessful ? (
         <Card>
@@ -131,7 +131,7 @@ function Register() {
           </CardContent>
         </Card>
       )}
-    </main>
+    </>
   );
 }
 

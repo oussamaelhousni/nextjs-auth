@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
+import { Toaster } from "@/components/ui/toaster";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { auth } from "@/auth";
-import LogoutBtn from "./logout-btn";
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter({ subsets: ["latin"] });
@@ -17,21 +16,10 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await auth();
   return (
     <html lang="en">
-      <body className={`antialiased ${inter.className}`}>
-        {!session?.user ? (
-          <div>No user currenlty logged in </div>
-        ) : (
-          <div>
-            {session?.user?.email}
-            <LogoutBtn />
-          </div>
-        )}
-
-        {children}
-      </body>
+      <body className={`antialiased ${inter.className}`}>{children}</body>
+      <Toaster />
     </html>
   );
 }
