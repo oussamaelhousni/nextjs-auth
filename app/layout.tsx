@@ -18,8 +18,10 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`antialiased ${inter.className}`}>{children}</body>
-      <Toaster />
+      <body className={`antialiased ${inter.className}`}>
+        {children}
+        <Toaster />
+      </body>
     </html>
   );
 }
