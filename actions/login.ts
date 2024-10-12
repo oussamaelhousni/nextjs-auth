@@ -7,12 +7,13 @@ const loginSchema = z.object({
   password: z.string().min(5, {
     message: "password must be at least 5 characters",
   }),
+  token: z.string().optional(),
 });
 
 type LoginSchemaType = z.infer<typeof loginSchema>;
 
-export const login = async ({ email, password }: LoginSchemaType) => {
-  const userValidation = loginSchema.safeParse({ email, password });
+export const login = async (credentials: LoginSchemaType) => {
+  const userValidation = loginSchema.safeParse(credentials);
 
   if (!userValidation.success) {
     return {
@@ -23,8 +24,7 @@ export const login = async ({ email, password }: LoginSchemaType) => {
 
   try {
     await signIn("credentials", {
-      email,
-      password,
+      ...credentials,
       redirect: false,
     });
   } catch (e: any) {
