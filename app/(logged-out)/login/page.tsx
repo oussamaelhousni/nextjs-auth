@@ -112,7 +112,7 @@ function Login() {
         <div className="text-muted-foreground text-sm">
           Forgot password{" "}
           <Link
-            href={`/reset-password?email=${form.getValues("email")}`}
+            href={`/reset-password?email=${form.getValues("email") || ""}`}
             className="underline"
           >
             Reset my password
