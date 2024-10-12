@@ -9,8 +9,6 @@ async function LogggedOutLayout({ children }: { children: ReactNode }) {
   if (session?.user?.id) {
     redirect("/my-account");
   }
-
-  console.log("session", session);
   return (
     <main className="min-h-screen flex items-center justify-center">
       {children}
